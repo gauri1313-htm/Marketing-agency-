@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Growth - Social Media Marketing Agency</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #111827;
+            background: white;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: white;
+            border-bottom: 1px solid #f3f4f6;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-menu {
+            display: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #111827;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #06b6d4;
+        }
+
+        .cta-button {
+            background: #06b6d4;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #0891b2;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (min-width: 768px) {
+            .nav-menu {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                border-top: 1px solid #f3f4f6;
+                flex-direction: column;
+                padding: 1rem;
+                gap: 1rem;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 6rem 1.5rem;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        @media (max-width: 767px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        @media (max-width: 767px) {
+            h1 {
+                font-size: 2.25rem;
+            }
+        }
+
+        .highlight {
+            color: #06b6d4;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #4b5563;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .button-group {
+                flex-direction: row;
+            }
+        }
+
+        .primary-button {
+            background: #111827;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+        }
+
+        .primary-button:hover {
+            background: #1f2937;
+        }
+
+        .secondary-button {
+            border: 2px solid #111827;
+            color: #111827;
+            padding: 1rem 2rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .secondary-button:hover {
+            background: #f9fafb;
+        }
+
+        .stats {
+            background: linear-gradient(to bottom right, #cffafe, #dbeafe);
+            border-radius: 1rem;
+            padding: 2rem 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .stat {
+            margin-bottom: 2rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #06b6d4;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #4b5563;
+        }
+
+        /* Sections */
+        section {
+            max-width: 80rem;
+            margin: 0 auto;
+            padding: 6rem 1.5rem;
+        }
+
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: #4b5563;
+            margin-bottom: 4rem;
+            max-width: 42rem;
+            line-height: 1.8;
+        }
+
+        #services {
+            border-top: 1px solid #f3f4f6;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            padding: 2rem;
+            transition: border-color 0.3s;
+        }
+
+        .service-card:hover {
+            border-color: #06b6d4;
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .service-card p {
+            color: #4b5563;
+            line-height: 1.7;
+        }
+
+        /* Dark Section */
+        .dark-section {
+            background: #111827;
+            color: #e5e7eb;
+        }
+
+        .dark-section .section-title {
+            color: #f3f4f6;
+        }
+
+        .dark-section .section-subtitle {
+            color: #d1d5db;
+        }
+
+        .dark-section h3 {
+            color: #f3f4f6;
+        }
+
+        .dark-section p {
+            color: #d1d5db;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+        }
+
+        .why-card {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .why-number {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 9999px;
+            background: #06b6d4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.125rem;
+            font-weight: bold;
+        }
+
+        .why-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .why-card p {
+            color: #d1d5db;
+            line-height: 1.7;
+        }
+
+        #process {
+            border-top: 1px solid #f3f4f6;
+        }
+
+        .process-item {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .process-number {
+            color: #9ca3af;
+            font-size: 0.875rem;
+            font-family: 'Courier New', monospace;
+            min-width: fit-content;
+        }
+
+        .process-item h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .process-item p {
+            color: #4b5563;
+            font-size: 1.125rem;
+        }
+
+        /* Contact Section */
+        #contact {
+            border-top: 1px solid #f3f4f6;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        @media (max-width: 767px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .contact-form {
+            background: #f9fafb;
+            border-radius: 0.5rem;
+            padding: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #06b6d4;
+            box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.1);
+        }
+
+        .submit-button {
+            width: 100%;
+            background: #111827;
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            border: none;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-button:hover {
+            background: #1f2937;
+        }
+
+        .success-message {
+            background: #dcfce7;
+            border: 1px solid #86efac;
+            color: #166534;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+            font-size: 0.875rem;
+        }
+
+        .check-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .check-item {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .check-icon {
+            color: #06b6d4;
+            flex-shrink: 0;
+            font-size: 1.5rem;
+        }
+
+        .check-item-content p:first-child {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .check-item-content p:last-child {
+            color: #4b5563;
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid #f3f4f6;
+            background: #f9fafb;
+            padding: 3rem 1.5rem;
+        }
+
+        .footer-container {
+            max-width: 80rem;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .footer-text {
+            color: #4b5563;
+            font-size: 0.875rem;
+        }
+
+        @media (max-width: 767px) {
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Growth.</div>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <div class="nav-menu" id="navMenu">
+                <a href="#services">Services</a>
+                <a href="#why">Why Us</a>
+                <a href="#process">Process</a>
+                <a href="#contact" class="cta-button">Start Project</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-grid">
+            <div>
+                <h1>Social media that <span class="highlight">moves the needle.</span></h1>
+                <p>We manage your social presence so you can focus on growing. Strategic content. Real engagement. Measurable results.</p>
+                <div class="button-group">
+                    <a href="#contact" class="primary-button">Get Started →</a>
+                    <a href="#why" class="secondary-button">Learn More</a>
+                </div>
+            </div>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">340%</div>
+                    <div class="stat-label">Average client engagement growth</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">8-12 wks</div>
+                    <div class="stat-label">Timeline to see meaningful results</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Personalized strategy per client</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <h2 class="section-title">What We Do</h2>
+        <p class="section-subtitle">Complete social media management that drives real business results.</p>
+        
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Content Strategy</h3>
+                <p>Custom content calendars aligned with your business goals. We know what works across platforms.</p>
+            </div>
+            <div class="service-card">
+                <h3>Community Management</h3>
+                <p>Respond, engage, and build relationships with your audience. We're here every day.</p>
+            </div>
+            <div class="service-card">
+                <h3>Growth & Analytics</h3>
+                <p>Data-driven optimization. Monthly reports showing what works and why.</p>
+            </div>
+            <div class="service-card">
+                <h3>Paid Social</h3>
+                <p>Strategic ad campaigns that convert. We maximize ROI on every platform.</p>
+            </div>
+            <div class="service-card">
+                <h3>Content Creation</h3>
+                <p>Professional copy, graphics, and videos that stop the scroll.</p>
+            </div>
+            <div class="service-card">
+                <h3>Monthly Strategy Calls</h3>
+                <p>Quarterly deep-dives to refine strategy and discuss growth opportunities.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section id="why" class="dark-section">
+        <h2 class="section-title">Why Choose Growth</h2>
+        <p class="section-subtitle">Three principles that guide everything we do.</p>
+        
+        <div class="why-grid">
+            <div class="why-card">
+                <div class="why-number">1</div>
+                <h3>Efficiency</h3>
+                <p>We don't waste time on vanity metrics. Every post, every campaign is designed to move your business forward. Clean strategy, clear execution.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-number">2</div>
+                <h3>Real Growth</h3>
+                <p>We build sustainable growth across all niches. Whether you're B2B or B2C, we understand your market and know how to reach the right people.</p>
+            </div>
+            <div class="why-card">
+                <div class="why-number">3</div>
+                <h3>Support</h3>
+                <p>You're not just a client. We're invested in your success. Direct access, honest feedback, and proactive optimization every month.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process">
+        <h2 class="section-title">Our Process</h2>
+        <p class="section-subtitle">Simple, transparent, and results-oriented.</p>
+        
+        <div>
+            <div class="process-item">
+                <div class="process-number">01</div>
+                <div>
+                    <h3>Audit & Discovery</h3>
+                    <p>We analyze your current presence, competition, and audience. Understanding your baseline is everything.</p>
+                </div>
+            </div>
+            <div class="process-item">
+                <div class="process-number">02</div>
+                <div>
+                    <h3>Strategy & Planning</h3>
+                    <p>Custom strategy built on data and your goals. We align on what success looks like.</p>
+                </div>
+            </div>
+            <div class="process-item">
+                <div class="process-number">03</div>
+                <div>
+                    <h3>Execution</h3>
+                    <p>Content, campaigns, and community management. We bring the strategy to life with consistency.</p>
+                </div>
+            </div>
+            <div class="process-item" style="border-bottom: none;">
+                <div class="process-number">04</div>
+                <div>
+                    <h3>Measure & Optimize</h3>
+                    <p>Monthly reviews, performance reports, and continuous improvements. Growth compounds over time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="contact-grid">
+            <div>
+                <h2 class="section-title">Start Your Growth</h2>
+                <p style="color: #4b5563; font-size: 1.25rem; margin-bottom: 2rem; line-height: 1.8;">Let's talk about your goals. We'll design a strategy that actually works for your business.</p>
+                
+                <div class="check-list">
+                    <div class="check-item">
+                        <div class="check-icon">✓</div>
+                        <div class="check-item-content">
+                            <p>Free consultation</p>
+                            <p>Let's understand your needs</p>
+                        </div>
+                    </div>
+                    <div class="check-item">
+                        <div class="check-icon">✓</div>
+                        <div class="check-item-content">
+                            <p>Custom proposal</p>
+                            <p>Tailored to your goals & budget</p>
+                        </div>
+                    </div>
+                    <div class="check-item">
+                        <div class="check-icon">✓</div>
+                        <div class="check-item-content">
+                            <p>Results guaranteed</p>
+                            <p>We're invested in your success</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <form onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="John Smith" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="john@company.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Tell us about your goals</label>
+                        <textarea id="message" name="message" rows="4" placeholder="What are you looking to achieve with social media?" required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-button">Send Message</button>
+                    <div id="successMessage" style="display: none;" class="success-message">
+                        Thank you! We'll be in touch within 24 hours.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">Growth.</div>
+            <p class="footer-text">© 2025 Growth Marketing Agency. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            // Clear form
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('message').value = '';
+            
+            // Show success message
+            const successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block';
+            
+            // Hide after 3 seconds
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 3000);
+        }
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navMenu').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
