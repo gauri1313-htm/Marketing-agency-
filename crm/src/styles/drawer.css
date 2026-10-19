@@ -1,0 +1,251 @@
+.drawer {
+  position: fixed;
+  inset: 0 0 0 auto;
+  width: min(540px, 100vw);
+  max-width: 100vw;
+  height: 100dvh;
+  max-height: 100dvh;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-left: 1px solid var(--rule);
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: var(--shadow-pop);
+}
+.drawer[open] {
+  animation: drawer-in 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.drawer::backdrop {
+  background: rgba(15, 16, 18, 0.32);
+}
+@keyframes drawer-in {
+  from {
+    transform: translateX(32px);
+    opacity: 0;
+  }
+}
+
+.drawer-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.drawer-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid var(--rule);
+}
+.drawer-title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+.drawer-sub {
+  margin-top: 4px;
+  color: var(--slate);
+}
+.icon-btn {
+  width: 32px;
+  padding: 0;
+}
+.drawer-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 24px 32px;
+}
+
+/* ---------- Detail ---------- */
+
+.detail-deal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--rule);
+}
+.detail-value {
+  font-size: 32px;
+  line-height: 1.1;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  font-variant-numeric: proportional-nums;
+}
+.detail-value-note {
+  color: var(--slate);
+  font-size: 14px;
+}
+.detail-stage {
+  display: grid;
+  gap: 4px;
+  min-width: 180px;
+  font-size: 13px;
+  color: var(--slate);
+}
+
+.detail-facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 20px;
+  margin: 18px 0;
+}
+.detail-facts dt {
+  font-size: 13px;
+  color: var(--muted);
+}
+.detail-facts dd {
+  margin: 2px 0 0;
+  overflow-wrap: anywhere;
+}
+.detail-facts dd.is-overdue {
+  color: var(--danger);
+}
+.detail-aside {
+  display: block;
+  font-size: 13px;
+  color: var(--muted);
+}
+.is-overdue .detail-aside {
+  color: var(--danger);
+}
+.detail-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 650;
+}
+
+.activity {
+  margin-top: 20px;
+}
+.activity-form {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 8px;
+  margin: 12px 0 20px;
+}
+.activity-form .textarea {
+  grid-column: 1 / -1;
+}
+.activity-form .btn {
+  grid-column: 2;
+  justify-self: end;
+}
+.activity-form .btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.timeline-item {
+  position: relative;
+  padding: 0 0 16px 20px;
+  border-left: 1px solid var(--rule);
+  margin-left: 4px;
+}
+.timeline-item:last-child {
+  border-left-color: transparent;
+}
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: 5px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 2px solid var(--rule-strong);
+}
+.timeline-item--stage::before {
+  background: var(--signal);
+  border-color: var(--signal);
+}
+.timeline-meta {
+  display: flex;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--muted);
+}
+.timeline-type {
+  font-weight: 600;
+  color: var(--slate);
+}
+.timeline-item p {
+  margin-top: 2px;
+  max-width: 62ch;
+}
+
+/* ---------- Form ---------- */
+
+.lead-form fieldset {
+  border: 0;
+  margin: 0 0 20px;
+  padding: 0;
+}
+.lead-form legend {
+  padding: 0;
+  margin-bottom: 10px;
+  font-weight: 650;
+}
+.field-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 14px;
+}
+.field {
+  display: grid;
+  gap: 4px;
+  align-content: start;
+}
+.field label {
+  font-size: 13px;
+  color: var(--slate);
+}
+.field-error {
+  font-size: 13px;
+  color: var(--danger);
+}
+.field-hint {
+  font-size: 13px;
+  color: var(--muted);
+}
+.form-actions {
+  position: sticky;
+  bottom: -32px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 14px 0 0;
+  background: var(--surface);
+  border-top: 1px solid var(--rule);
+}
+
+@media (max-width: 520px) {
+  .field-grid,
+  .detail-facts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .drawer-head,
+  .drawer-body {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}

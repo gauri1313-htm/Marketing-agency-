@@ -1,0 +1,184 @@
+.link-btn {
+  padding: 0;
+  margin-left: 6px;
+  border: 0;
+  background: none;
+  color: var(--signal);
+  font-weight: 550;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.page-lede .link-btn {
+  margin-left: 0;
+  color: var(--danger);
+}
+
+.check {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 12px;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  font-size: 14px;
+  cursor: pointer;
+}
+.check input {
+  accent-color: var(--signal);
+  margin: 0;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.leads-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.leads-table th {
+  position: sticky;
+  top: 0;
+  background: var(--surface-2);
+  border-bottom: 1px solid var(--rule);
+  text-align: left;
+  font-weight: 550;
+  color: var(--slate);
+  padding: 0;
+  white-space: nowrap;
+}
+.th-sort {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 10px 14px;
+  border: 0;
+  background: none;
+  color: inherit;
+  font-weight: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  text-align: inherit;
+}
+.th-sort:hover,
+.th-sort.is-active {
+  color: var(--ink);
+}
+.th-caret {
+  font-size: 9px;
+  width: 9px;
+}
+.leads-table th.is-num .th-sort {
+  justify-content: flex-end;
+}
+.leads-table th:not(:has(.th-sort)) {
+  padding: 10px 14px;
+  font-size: 13px;
+}
+
+.leads-table td {
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+.leads-table tbody tr {
+  cursor: pointer;
+  transition: background-color 100ms;
+}
+.leads-table tbody tr:hover {
+  background: var(--surface-2);
+}
+.leads-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+.leads-table .is-num {
+  text-align: right;
+}
+.leads-table td.is-overdue {
+  color: var(--danger);
+  font-weight: 550;
+  white-space: nowrap;
+}
+.leads-table td.is-overdue svg {
+  vertical-align: -2px;
+}
+
+.leads-table td:first-child {
+  min-width: 170px;
+}
+
+.row-link {
+  padding: 0;
+  border: 0;
+  background: none;
+  font-weight: 650;
+  color: var(--ink);
+  cursor: pointer;
+  text-align: left;
+}
+.row-link:hover {
+  color: var(--signal);
+}
+.cell-sub {
+  display: block;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.stage-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  white-space: nowrap;
+  font-weight: 500;
+}
+.stage-dot {
+  flex: none;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+.stage-pill--lost {
+  color: var(--muted);
+}
+
+.empty {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  padding: 48px 16px;
+  text-align: center;
+  color: var(--slate);
+}
+.empty-title {
+  font-weight: 650;
+  color: var(--ink);
+  font-size: 16px;
+}
+.empty .btn {
+  margin-top: 8px;
+}
+
+@media (max-width: 1100px) {
+  .col-added {
+    display: none;
+  }
+}
+@media (max-width: 960px) {
+  .col-service {
+    display: none;
+  }
+}
+@media (max-width: 640px) {
+  .col-owner {
+    display: none;
+  }
+}
